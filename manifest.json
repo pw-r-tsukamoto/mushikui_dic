@@ -1,12 +1,13 @@
 {
     "manifest_version": 3,
     "name": "翻訳v2",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "description": "ほげほげ。ふがふが。いい名前あったら名前変更",
     "content_scripts": [
         {
             "matches": [ "<all_urls>" ],
-            "js": [ "main.js" ]
+            "js": [ "src/main.js" ],
+            "css": [ "src/main.css" ]
         }
     ],
     "web_accessible_resources": [
@@ -16,8 +17,8 @@
         }
     ],
     "action": {
-        "default_title": "title",
-        "default_popup": "src/browser_action/browser_action.html"
+        "default_title": "設定",
+        "default_popup": "src/browser_action/browser.html"
     },
     "permissions": [
         "storage"

@@ -1,12 +1,13 @@
 class Controler {
 	constructor() {
-		this.positionX = 0;
-		this.positionY = 0;
-		this.wipe = this.setWipe();
 		this.req_url = null;
 		this.auth_key = null;
 		this.mode = null;
-		this.getInit(this);
+		
+		this.positionX = 0;
+		this.positionY = 0;
+		this.wipe = this.setWipe();
+		this.setInit(this);
 		this.setTriggers(this);
 	}
 	getItem(key){
@@ -17,7 +18,7 @@ class Controler {
 		});
 	}
 	// 必要情報を取得
-	async getInit(self){
+	async setInit(self){
 		this.req_url = await this.getItem("req_url");
 		this.auth_key = await this.getItem("auth_key");
 		this.mode = await this.getItem("translate_switch");
@@ -29,16 +30,11 @@ class Controler {
 						resolve(JSON.parse(this.responseText));
 					}
 				});
-				req.open('GET', chrome.runtime.getURL('config.json'), true);
+				req.open('GET', chrome.runtime.getURL('../config.json'), true);
 				req.send();
 			});
 			promise.then(function(val){
-				if(val.auth_key){
-					// setItem auth_key
-					self.auth_key = val.auth_key
-				}
 				if(val.req_url){
-					// setItem auth_key
 					self.req_url = val.req_url
 				}
 			});
@@ -114,7 +110,7 @@ class Controler {
 		document.addEventListener('copy', async function(){
 			let errors = [];
 			if(!self.req_url){
-				errors.push('DeepL APIのリクエストURLがありません');
+				errors.push('DeepL APIのリクエストURLがありません。config');
 			}
 			if(!self.auth_key){
 				errors.push('DeepLの認証キーがありません。設定してください');

@@ -1,5 +1,4 @@
 {
     "req_url": "https://api-free.deepl.com/v2/translate",
-    "auth_key":"",
     "lang":"JA"
 }
