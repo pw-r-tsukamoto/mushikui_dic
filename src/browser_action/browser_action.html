@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <script type="text/javascript" src="/src/browser_action/init.js" defer></script>
+    </head>
+    <body>
+        <section style="width: 300px;">
+            <h1>設定</h1>
+            <p>翻訳モードのON・OFF</p>
+            <p>
+                <label>
+                    <input type="radio" name="translate_switch" value="1">ON
+                </label>
+                <label>
+                    <input type="radio" name="translate_switch" value="0">OFF
+                </label>
+            </p>
+            <p>DeepL APIの認証キー<br>（<a href="https://www.deepl.com/ja/account/summary" target="_blank">ここ</a>から取得できます。※要アカウント登録）</p>
+            <p>
+                <input style="width: 90%" type="password" name="auth_key" placeholder="ここに認証キーを入力してください">
+            </p>
+        </section>
+    </body>
+</html>
