@@ -6,14 +6,6 @@
 			});
 		});
 	}
-	// オンオフ表示
-	function Badge(mode){
-		let modetext = mode == 1 ? 'ON' : 'OFF';
-		let modecolor = mode == 1 ? 'green' : 'black';
-		chrome.action.setBadgeBackgroundColor({color: modecolor});
-		chrome.action.setBadgeText({text: modetext});
-	}
-	
 	// 取得
 	let translate_switch = await getItem("translate_switch");
 	let auth_key = await getItem("auth_key");
@@ -30,7 +22,6 @@
 	for(var i = 0; i < modehtml.length; i++){
 		modehtml[i].addEventListener('change', function(){
 			chrome.storage.local.set({translate_switch: this.value});
-			Badge(this.value);
 		});
 	}
 	let auth_key_html = document.querySelector('input[name="auth_key"]');
