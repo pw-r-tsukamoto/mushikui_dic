@@ -9,9 +9,6 @@
 	// 取得
 	let translate_switch = await getItem("translate_switch");
 	let auth_key = await getItem("auth_key");
-	console.log(translate_switch);
-	console.log(auth_key);
-
 	if(!/^\d+$/.test(translate_switch)){
 		chrome.storage.local.set({translate_switch: 0});
 		translate_switch = 0;
@@ -20,7 +17,7 @@
 	if(auth_key){
 		document.querySelector('input[name="auth_key"]').value = auth_key;
 	}
-	// 変更時
+	// 入力値を変更したとき
 	let modehtml = document.querySelectorAll('input[name="translate_switch"]');
 	for(var i = 0; i < modehtml.length; i++){
 		modehtml[i].addEventListener('change', function(){
