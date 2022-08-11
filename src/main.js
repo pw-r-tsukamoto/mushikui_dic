@@ -79,12 +79,12 @@ class Controler {
 		});
 		wipe.appendChild(delbtn);
 	}
-	requestTransrate(text){
+	async requestTransrate(text){
 		let self = this;
 		let req_url = self.req_url;
 		let auth_key = self.auth_key;
 		let lang = self.transToLang;
-		return new Promise(function(resolve, f) {
+		return new Promise(function(resolve) {
 			let req = new XMLHttpRequest();
 			req.addEventListener("load", function(){
 				if(this.status == 200 && this.readyState == XMLHttpRequest.DONE){
@@ -94,14 +94,14 @@ class Controler {
 			});
 			req.open('POST', req_url, true);
 			req.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
-			req.send(`auth_key=${auth_key}&text=${text}&target_lang=JA`);
+			req.send(`auth_key=${auth_key}&text=${text}&target_lang=${lang}`);
 		});
 	}
 	setTriggers(){
 		let self = this;
 		document.addEventListener('copy', async function(){
 			// ページを開いた状態のまま値を変えているかもしれないので一度更新
-			await self.getInitFromStorage();
+			self.getInitFromStorage();
 			
 			let errors = [];
 			if(!self.req_url){
@@ -121,9 +121,9 @@ class Controler {
 					let text = window.getSelection().toString();
 					// 翻訳
 					let res = await self.requestTransrate(text);
-					let translated_text = res.translations[0].text;
+					let res_text = res.translations[0].text;
 					// 画面に反映
-					self.showWipe(translated_text);
+					self.showWipe(res_text);
 				}
 			}
 		});
