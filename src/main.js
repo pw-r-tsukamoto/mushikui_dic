@@ -45,21 +45,15 @@ class Controler {
 	setWipe(){
 		const bodyelement = document.querySelector('body');
 		const wipeparent = document.createElement('div');
+		wipeparent.id = 'the_wipewindow_for_transrator_parant';
 		wipeparent.style.position = 'relative';
 		bodyelement.insertBefore(wipeparent, bodyelement.firstChild);
-
 		const wipe = document.createElement('div');
 		wipe.className = 'the_wipewindow_for_transrator';
 		wipe.style.position = 'absolute';
 		wipe.style.left = '100%';
 		wipe.style.top = '100%';
 		wipe.style.display = 'none';
-
-		// 見た目のレイアウト
-		wipe.style.border = '1px solid #585858';
-		wipe.style.backgroundColor = '#ededed';
-		wipe.style.padding = '0.1em 0.4em';
-
 		wipe.addEventListener('copy', function(e){
 			e.stopPropagation();
 		});
@@ -76,13 +70,7 @@ class Controler {
 		wipe.style.zIndex = '99999';
 
 		const delbtn = document.createElement('span');
-		delbtn.style.position = 'absolute';
-		delbtn.style.right = '0';
-		delbtn.style.top = '-15px';
-		delbtn.style.width = '15px';
-		delbtn.style.height = '15px';
-		delbtn.style.backgroundColor = 'red';
-		delbtn.style.display = 'block';
+		delbtn.className = 'delbtn';
 		delbtn.addEventListener('click', function(e){
 			wipe.style.left = '100%';
 			wipe.style.top = '100%';

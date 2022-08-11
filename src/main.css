@@ -1,0 +1,19 @@
+
+#the_wipewindow_for_transrator_parant .the_wipewindow_for_transrator{
+  background-color: #ededed;
+  border: 1px solid #585858;
+  padding: 0.1em 0.4em;
+  max-width: 600px;
+}
+
+#the_wipewindow_for_transrator_parant .the_wipewindow_for_transrator .delbtn{
+  width: 15px;
+  height: 15px;
+  display: block;
+  position: absolute;
+  top: -16px;
+  right: -1px;
+  background-color: red;
+  border: 1px solid black;
+  border-bottom: none;
+}
