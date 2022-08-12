@@ -57,16 +57,6 @@ class Controler {
 		wipe.addEventListener('copy', function(e){
 			e.stopPropagation();
 		});
-		
-		const delbtn = document.createElement('span');
-		delbtn.className = 'delbtn';
-		delbtn.addEventListener('click', function(e){
-			wipe.style.left = '100%';
-			wipe.style.top = '100%';
-			wipe.style.display = 'none';
-		});
-		wipe.appendChild(delbtn);
-		
 		wipeparent.appendChild(wipe);
 		return wipe;
 	}
@@ -78,6 +68,16 @@ class Controler {
 		wipe.style.top = `${self.positionY}px`;
 		wipe.style.display = 'block';
 		wipe.style.zIndex = '99999';
+
+		const delbtn = document.createElement('span');
+		delbtn.className = 'delbtn';
+		delbtn.addEventListener('click', function(e){
+			wipe.style.left = '100%';
+			wipe.style.top = '100%';
+			wipe.style.display = 'none';
+			delbtn.removeEventListener('click', this);
+		});
+		wipe.appendChild(delbtn);
 	}
 	async requestTransrate(text){
 		let self = this;
@@ -136,7 +136,7 @@ class Controler {
 (function(){
 	new Controler();
 	
-	shortcut.add("Shift+H", function() {
+	shortcut.add("Shift+H", async function() {
 		chrome.storage.local.get("translate_switch", function(val){
 			let change = val.translate_switch == 1 ? 0 : 1;
 			chrome.storage.local.set({"translate_switch": change});
