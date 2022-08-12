@@ -135,4 +135,11 @@ class Controler {
 }
 (function(){
 	new Controler();
+	
+	shortcut.add("Shift+H", async function() {
+		chrome.storage.local.get("translate_switch", function(val){
+			let change = val.translate_switch == 1 ? 0 : 1;
+			chrome.storage.local.set({"translate_switch": change});
+		});
+	});
 })();
