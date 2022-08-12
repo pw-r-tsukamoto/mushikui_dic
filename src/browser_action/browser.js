@@ -1,14 +1,7 @@
 (async function(){
-	function getItem(key){
-		return new Promise(function(resolve) {
-			chrome.storage.local.get(key, function(res){
-				resolve(res[key]);
-			});
-		});
-	}
 	// 取得
-	let translate_switch = await getItem("translate_switch");
-	let auth_key = await getItem("auth_key");
+	let translate_switch = await chrome.storage.local.get("translate_switch");
+	let auth_key = await chrome.storage.local.get("auth_key");
 	if(!/^\d+$/.test(translate_switch)){
 		chrome.storage.local.set({translate_switch: 0});
 		translate_switch = 0;
