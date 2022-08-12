@@ -16,6 +16,9 @@
             "css": [ "src/main.css" ]
         }
     ],
+    "background": {
+        "service_worker": "src/background.js"
+    },
     "web_accessible_resources": [
         {
             "resources": ["config.json"],
