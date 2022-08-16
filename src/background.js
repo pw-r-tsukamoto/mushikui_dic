@@ -11,6 +11,9 @@ let badgeObj = {
 
 chrome.storage.local.get("translate_switch", function(res){
   let curval = res.translate_switch;
+  if(!/^\d+$/.test(curval)){
+    curval = 0;
+  }
   chrome.action.setBadgeBackgroundColor({color: badgeObj[curval].color });
   chrome.action.setBadgeText({ text: badgeObj[curval].switch });
 });
