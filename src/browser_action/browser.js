@@ -21,4 +21,11 @@
 	auth_key_html.addEventListener('change', function(){
 		chrome.storage.local.set({auth_key: this.value});
 	});
+	
+	shortcut.add("Alt+H", async function() {
+		chrome.storage.local.get("translate_switch", function(val){
+			let change = val.translate_switch == 1 ? 0 : 1;
+			chrome.storage.local.set({"translate_switch": change});
+		});
+	});
 })();
