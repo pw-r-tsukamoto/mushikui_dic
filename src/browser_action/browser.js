@@ -8,7 +8,7 @@
 	}
 	document.querySelector('input[name="translate_switch"][value="' + translate_switch + '"]').checked = true;
 	if(auth_key){
-		document.querySelector('input[name="auth_key"]').value = auth_key;
+		document.querySelector('input[name="auth_key"]').value = auth_key.auth_key;
 	}
 	// 入力値を変更したとき
 	let modehtml = document.querySelectorAll('input[name="translate_switch"]');
