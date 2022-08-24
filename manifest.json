@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "翻訳v2",
-    "version": "1.1.1",
-    "description": "ほげほげ。ふがふが。いい名前あったら名前変更",
+    "name": "虫食い翻訳辞典 for DeepL",
+    "version": "1.1.0",
+    "description": "文章をコピーすると、その個所のみを翻訳できます。（利用にはDeepLのアカウントが必要です）",
     "icons": {
         "128": "icons/icon.png"
     },
