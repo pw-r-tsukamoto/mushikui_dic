@@ -25,6 +25,7 @@
 	shortcut.add("Alt+H", async function() {
 		chrome.storage.local.get("translate_switch", function(val){
 			let change = val.translate_switch == 1 ? 0 : 1;
+			document.querySelector('input[name="translate_switch"][value="' + change + '"]').checked = true;
 			chrome.storage.local.set({"translate_switch": change});
 		});
 	});
